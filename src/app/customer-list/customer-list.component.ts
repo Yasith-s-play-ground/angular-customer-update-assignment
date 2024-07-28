@@ -1,14 +1,15 @@
 import {Component, ComponentFactoryResolver, inject, ViewChild, ViewContainerRef} from '@angular/core';
 import {CustomerComponent} from "../customer/customer.component";
 import {ValueService} from "../service/value.service";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-customer-list',
   standalone: true,
   imports: [
     CustomerComponent,
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   templateUrl: './customer-list.component.html',
   styleUrl: './customer-list.component.css'

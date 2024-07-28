@@ -36,8 +36,8 @@
   <app-customer *ngFor="let customer of selectedCustomerList" [id]="customer.id" [name]="customer.name"
                 [selected]="customer.selected"/>
   </tbody>
-  <tfoot>
-  <tr *ngIf="selectedCustomerList.length" class="row">
+  <tfoot *ngIf="selectedCustomerList.length===0">
+  <tr class="row">
     <td colspan="4" class="text-center">No Customers yet!</td>
   </tr>
   </tfoot>
