@@ -26,7 +26,7 @@ export class CustomerComponent {
     this.valueService.updateValue({
       id: this.id,
       name: this.name,
-      selected: this.selected
+      selected: !this.selected
     });
   }
 }

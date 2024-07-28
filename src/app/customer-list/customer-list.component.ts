@@ -25,7 +25,7 @@ export class CustomerListComponent {
     // const componentFactory = this.componentFactoryResolver.resolveComponentFactory(CustomerComponent);
 
     this.valueService.getValue().subscribe(value => {
-      if (value !== null && value.id !== '' && value.name !== '') {
+      if (value !== null && value.id !== '' && value.name !== '' && !value.selected) {
         this.notSelectedCustomerList.push(value);
       }
     });
