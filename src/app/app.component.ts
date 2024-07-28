@@ -14,8 +14,8 @@ import {ValueService} from "./service/value.service";
 })
 export class AppComponent {
 
-  notSelectedCustomerList: {}[] = [];
-  selectedCustomerList: {}[] = [];
+  // notSelectedCustomerList: {}[] = [];
+  // selectedCustomerList: {}[] = [];
 
   customerList: { id: string, name: string, selected: boolean }[] = [];
 

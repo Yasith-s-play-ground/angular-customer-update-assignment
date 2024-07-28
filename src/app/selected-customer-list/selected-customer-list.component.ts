@@ -15,7 +15,7 @@ import {NgForOf, NgIf} from "@angular/common";
   styleUrl: './selected-customer-list.component.css'
 })
 export class SelectedCustomerListComponent {
-  selectedCustomerList: { id: string, name: string, selected: boolean }[] = [];
+  // selectedCustomerList: { id: string, name: string, selected: boolean }[] = [];
   customerList: { id: string, name: string, selected: boolean }[] = [];
   selectedCount = 0;
 
