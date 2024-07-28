@@ -17,26 +17,22 @@ import {NgForOf, NgIf} from "@angular/common";
 export class CustomerListComponent {
   valueService: ValueService = inject(ValueService);
 
-  notSelectedCustomerList: { id: string, name: string, selected: boolean }[] = [];
+  // notSelectedCustomerList: { id: string, name: string, selected: boolean }[] = [];
+  customerList: { id: string, name: string, selected: boolean }[] = [];
+  selectedCount = 0;
 
-
-  // @ViewChild('container', {read: ViewContainerRef}) containerRef!: ViewContainerRef;
-  //
   constructor() {
-    // const componentFactory = this.componentFactoryResolver.resolveComponentFactory(CustomerComponent);
 
     this.valueService.getValue().subscribe(value => {
-      if (value !== null && value.id !== '' && value.name !== '' && !value.selected) {
-        this.notSelectedCustomerList.push(value);
+        if (value !== null) {
+          this.customerList = value;
+          this.selectedCount = 0;
+          this.customerList.forEach(customer => {
+            if (customer.selected) this.selectedCount++
+          });
+        }
       }
-    });
-
-    // this.valueService.getValue().subscribe(
-    //   value => {
-    //     // const componentRef = this.containerRef.createComponent(componentFactory);
-    //     // componentRef.id=value.id;
-    //   }
-    // )
+    );
 
   }
 

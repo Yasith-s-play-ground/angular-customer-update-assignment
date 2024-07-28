@@ -16,14 +16,21 @@ import {NgForOf, NgIf} from "@angular/common";
 })
 export class SelectedCustomerListComponent {
   selectedCustomerList: { id: string, name: string, selected: boolean }[] = [];
+  customerList: { id: string, name: string, selected: boolean }[] = [];
+  selectedCount = 0;
 
   constructor(private valueService: ValueService) {
     valueService.getValue().subscribe(value => {
-        if (value !== null && value.id !== '' && value.name !== '' && value.selected) {
-          this.selectedCustomerList.push(value);
+        if (value !== null) {
+          this.customerList = value;
+          this.selectedCount = 0;
+          this.customerList.forEach(customer => {
+            if (customer.selected) this.selectedCount++
+          });
         }
       }
     );
   }
+
 
 }

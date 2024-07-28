@@ -18,15 +18,32 @@ export class CustomerComponent {
   @Input()
   selected: boolean = false;
 
+  customerList: { id: string, name: string, selected: boolean }[] = [];
+
+
   constructor(private valueService: ValueService) {
-    // valueService.getValue().subscribe();
+    valueService.getValue().subscribe(
+      customerList => {
+        this.customerList = customerList;
+      }
+    );
   }
 
-  moveToSelectedCustomerList() {
-    this.valueService.updateValue({
-      id: this.id,
-      name: this.name,
-      selected: !this.selected
+  changeCustomerSelection() {
+    this.customerList.forEach(customer => {
+      if (customer.id === this.id) {
+        customer.selected = !customer.selected;
+      }
     });
+
+    this.valueService.updateValue(
+      this.customerList
+      // {
+      // id: this.id,
+      // name: this.name,
+      // selected: !this.selected
+
+      // }
+    );
   }
 }

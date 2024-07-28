@@ -17,16 +17,21 @@ class Customer {
 })
 export class FormComponent {
 
+  customerList: { id: string, name: string, selected: boolean }[] = [];
+
+
   constructor(private valueService: ValueService) {
 
   }
 
   updateValue(id: string, name: string) {
-    this.valueService.updateValue({
+    this.customerList.push({
       id: id,
       name: name,
       selected: false
     });
+    this.valueService.updateValue(this.customerList);
+    console.log(this.customerList);
 
   }
 }

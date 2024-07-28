@@ -17,19 +17,22 @@ export class AppComponent {
   notSelectedCustomerList: {}[] = [];
   selectedCustomerList: {}[] = [];
 
+  customerList: { id: string, name: string, selected: boolean }[] = [];
+
+
   total = 0;
   selected = 0;
 
   constructor(private valueService: ValueService) {
     valueService.getValue().subscribe(value => {
-        if (value !== null && value.id !== '' && value.name !== '') {
-          if (!value.selected) {
-            this.notSelectedCustomerList.push(value);
-            this.total = this.notSelectedCustomerList.length + this.selectedCustomerList.length;
-          } else {
-            this.selectedCustomerList.push(value);
-            this.selected = this.selectedCustomerList.length;
-          }
+        if (value !== null) {
+          this.customerList = value;
+          this.total = this.customerList.length;
+
+          this.selected = 0;
+          this.customerList.forEach(customer => {
+            if (customer.selected) this.selected++;
+          });
         }
       }
     )

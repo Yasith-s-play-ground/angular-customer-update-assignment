@@ -1,11 +1,6 @@
 <table class="table">
   <thead>
   <tr class="row">
-    <!--    <th scope="col"></th>-->
-    <!--    <th scope="col">ID</th>-->
-    <!--    <th scope="col">Name</th>-->
-    <!--    <th scope="col"></th>-->
-
     <th class="col-2 text-center"></th>
     <th class="col-3 text-center">ID</th>
     <th class="col-5 text-center">Name</th>
@@ -13,12 +8,15 @@
   </tr>
   </thead>
   <tbody>
-  <!--  <tr class="row" *ngFor="let customer of notSelectedCustomerList">-->
-  <app-customer *ngFor="let customer of notSelectedCustomerList" [id]="customer.id" [name]="customer.name"
-                [selected]="customer.selected"/>
-  <!--  </tr>-->
+  <div *ngFor="let customer of customerList">
+    <div *ngIf="!customer.selected && customer.name!=='' && customer.id!==''">
+      <app-customer [id]="customer.id" [name]="customer.name"
+                    [selected]="customer.selected"/>
+    </div>
+  </div>
   </tbody>
-  <tfoot *ngIf="notSelectedCustomerList.length===0">
+  <tfoot
+    *ngIf="customerList.length===0 || customerList[0].id==='' || customerList[0].name==='' || (customerList.length-selectedCount<=0)">
   <tr class="row">
     <td colspan="4" class="text-center">No Customers yet!</td>
   </tr>

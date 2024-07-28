@@ -1,31 +1,6 @@
-<!--<table class="table table-bordered">-->
-<!--  <thead>-->
-<!--  <tr >-->
-<!--    <th scope="col"></th>-->
-<!--    <th scope="col">ID</th>-->
-<!--    <th scope="col">Name</th>-->
-<!--    <th scope="col"></th>-->
-<!--  </tr>-->
-<!--  </thead>-->
-<!--  <tbody>-->
-
-<!--  </tbody>-->
-<!--  <tfoot>-->
-<!--  <tr>-->
-<!--    <td colspan="4" class="text-center">No Customers yet!</td>-->
-<!--  </tr>-->
-<!--  </tfoot>-->
-<!--</table>-->
-
-
 <table class="table">
   <thead>
   <tr class="row">
-    <!--    <th scope="col"></th>-->
-    <!--    <th scope="col">ID</th>-->
-    <!--    <th scope="col">Name</th>-->
-    <!--    <th scope="col"></th>-->
-
     <th class="col-2 text-center"></th>
     <th class="col-3 text-center">ID</th>
     <th class="col-5 text-center">Name</th>
@@ -33,10 +8,15 @@
   </tr>
   </thead>
   <tbody>
-  <app-customer *ngFor="let customer of selectedCustomerList" [id]="customer.id" [name]="customer.name"
-                [selected]="customer.selected"/>
+  <div *ngFor="let customer of customerList">
+    <div *ngIf="customer.selected">
+      <app-customer [id]="customer.id" [name]="customer.name"
+                    [selected]="customer.selected"/>
+    </div>
+  </div>
+
   </tbody>
-  <tfoot *ngIf="selectedCustomerList.length===0">
+  <tfoot *ngIf="selectedCount===0">
   <tr class="row">
     <td colspan="4" class="text-center">No Customers yet!</td>
   </tr>
