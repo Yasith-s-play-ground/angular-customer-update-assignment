@@ -1,13 +1,37 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
+import {CustomerListComponent} from "./customer-list/customer-list.component";
+import {SelectedCustomerListComponent} from "./selected-customer-list/selected-customer-list.component";
+import {FormComponent} from "./form/form.component";
+import {ValueService} from "./service/value.service";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CustomerListComponent, SelectedCustomerListComponent, FormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'services-customer-components-example';
+
+  notSelectedCustomerList: {}[] = [];
+  selectedCustomerList: {}[] = [];
+
+  total = 0;
+  selected = 0;
+
+  constructor(private valueService: ValueService) {
+    valueService.getValue().subscribe(value => {
+        if (value !== null && value.id !== '' && value.name !== '') {
+          if (!value.selected) {
+            this.notSelectedCustomerList.push(value);
+            this.total = this.notSelectedCustomerList.length + this.selectedCustomerList.length;
+          } else {
+            this.selectedCustomerList.push(value);
+            this.selected = this.selectedCustomerList.length;
+          }
+        }
+      }
+    )
+  }
 }

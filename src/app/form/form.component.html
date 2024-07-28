@@ -1,0 +1,15 @@
+<form action="javascript:void (0)">
+  <div class="container">
+    <div class="row">
+      <label class="col-4 d-flex justify-content-end" for="id-txt">ID : </label>
+      <input #idTxt class="col-8 form-control" id="id-txt" type="text">
+    </div>
+    <div class="row mt-2">
+      <label class="col-4 d-flex justify-content-end" for="name-txt">Name : </label>
+      <input #nameTxt class="col-8 form-control" id="name-txt" type="text">
+    </div>
+    <div class="row mt-2 d-flex justify-content-center">
+      <button (click)="updateValue(idTxt.value,nameTxt.value)" class="col-3 col-second btn btn-primary">ADD</button>
+    </div>
+  </div>
+</form>
