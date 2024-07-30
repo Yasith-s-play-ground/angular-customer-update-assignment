@@ -12,6 +12,8 @@ export class ValueService {
     // new BehaviorSubject({id: "", name: "", selected: this.selected});
     new BehaviorSubject([{id: "", name: "", selected: this.selected}]);
 
+  private totalSubject = new BehaviorSubject<number>(0);
+
   constructor() {
     console.log("Value Service Created");
   }
@@ -22,5 +24,8 @@ export class ValueService {
 
   public updateValue(value: { id: string, name: string, selected: boolean }[]) {
     this.valueSubject.next(value);    // notify
+    //table will be updated even if we don't notify, as all components refer same list
+    //but total will not be updated in app component as we don't run update
+    //if not we have to create total in service and let app component subscribe
   }
 }

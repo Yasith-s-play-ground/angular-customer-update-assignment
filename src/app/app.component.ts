@@ -27,7 +27,7 @@ export class AppComponent {
     valueService.getValue().subscribe(value => {
         if (value !== null) {
           this.customerList = value;
-          this.total = this.customerList.length;
+          this.total = this.customerList.length-1;
 
           this.selected = 0;
           this.customerList.forEach(customer => {

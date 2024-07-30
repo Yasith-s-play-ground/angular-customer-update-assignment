@@ -20,6 +20,7 @@ export class CustomerListComponent {
   // notSelectedCustomerList: { id: string, name: string, selected: boolean }[] = [];
   customerList: { id: string, name: string, selected: boolean }[] = [];
   selectedCount = 0;
+  total = 0;
 
   constructor() {
 
@@ -27,6 +28,7 @@ export class CustomerListComponent {
         if (value !== null) {
           this.customerList = value;
           this.selectedCount = 0;
+          this.total = this.customerList.length - 1;
           this.customerList.forEach(customer => {
             if (customer.selected) this.selectedCount++
           });

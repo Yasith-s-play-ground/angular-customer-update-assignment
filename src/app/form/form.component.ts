@@ -21,7 +21,8 @@ export class FormComponent {
 
 
   constructor(private valueService: ValueService) {
-
+    valueService.getValue().subscribe(value =>
+      this.customerList = value);
   }
 
   updateValue(id: string, name: string) {

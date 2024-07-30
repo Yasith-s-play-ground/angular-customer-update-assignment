@@ -16,7 +16,7 @@
   </div>
   </tbody>
   <tfoot
-    *ngIf="customerList.length===0 || customerList[0].id==='' || customerList[0].name==='' || (customerList.length-selectedCount<=0)">
+    *ngIf="total-selectedCount===0">
   <tr class="row">
     <td colspan="4" class="text-center">No Customers yet!</td>
   </tr>
