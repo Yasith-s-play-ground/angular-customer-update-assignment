@@ -46,4 +46,10 @@ export class CustomerComponent {
       // }
     );
   }
+
+  removeCustomer() {
+    let index = this.customerList.findIndex((customer) => customer.id === this.id);
+    this.customerList.splice(index, 1); /* remove the customer from list */
+    this.valueService.updateValue(this.customerList); /* update value service */
+  }
 }
